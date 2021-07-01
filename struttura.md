@@ -32,6 +32,8 @@ Modellizzare la struttura di una tabella per memorizzare tutti i dati riguardant
 
 - id PRIMARY KEY AUTOINCREMENT NOTNULL UNIQUE
 - nome VARCHAR(50) NOTNULL INDEX
+- cognome VARCHAR(50) NOTNULL INDEX
+- data_nascita DATE NOTNULL
 
 ## Nome tabella: ponte_insegnanti_corsi
 
@@ -54,7 +56,7 @@ Modellizzare la struttura di una tabella per memorizzare tutti i dati riguardant
 - id_corsi_laurea FOREIGN KEY
 - nome VARCHAR(50) NOTNULL INDEX
 - cognome VARCHAR(50) NOTNULL INDEX
-- data_nascita DATE
+- data_nascita DATE NOTNULL
 
 ## voti
 
