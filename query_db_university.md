@@ -170,3 +170,36 @@ ON `course_teacher`.`course_id` = `courses`.`id`
 WHERE `course_teacher`.`teacher_id` = 44;
 
 ## 4
+
+SELECT \*
+FROM `degrees`
+JOIN `departments`
+ON `degrees`.`department_id` = `departments`.`id`
+JOIN `students`
+ON `degrees`.`id` = `students`.`degree_id`
+ORDER BY `students`.`surname` ASC, `students`.`name` ASC;
+
+## 5
+
+SELECT \*
+FROM `courses`
+JOIN `degrees`
+ON `courses`.`degree_id` = `degrees`.`id`
+JOIN `course_teacher`
+ON `course_teacher`.`course_id` = `courses`.`id`
+JOIN `teachers`
+ON `teachers`.`id` = `course_teacher`.`teacher_id`;
+
+## 6
+
+SELECT \*
+FROM `teachers`
+JOIN `course_teacher`
+ON `course_teacher`.`teacher_id` = `teachers`.`id`
+JOIN `courses`
+ON `courses`.`id` = `course_teacher`.`course_id`
+JOIN `degrees`
+ON `degrees`.`id` = `courses`.`degree_id`
+JOIN `departments`
+ON `departments`.`id` = `degrees`.`department_id`
+WHERE `departments`.`name` LIKE 'Dipartimento di Matematica';
