@@ -13,6 +13,12 @@ FROM `students`
 WHERE `date_of_birth`
 LIKE '1990%';
 
+OPPURE
+
+SELECT \*
+FROM `students`
+WHERE YEAR(date_of_birth) = 1990;
+
 ## 2
 
 SELECT \*
@@ -24,6 +30,12 @@ WHERE `cfu` > '10';
 SELECT \*
 FROM `students`
 WHERE `date_of_birth` < '1991%';
+
+OPPURE
+
+SELECT \*
+FROM `students`
+WHERE YEAR(CURDATE()) - YEAR(date_of_birth) > 30;
 
 ## 4
 
@@ -39,12 +51,25 @@ FROM `exams`
 WHERE `date` = '2020-06-20'
 AND `hour` >= '14%';
 
+OPPURE
+
+SELECT \*
+FROM `exams`
+WHERE `date` = '2020-06-20'
+AND HOUR(`hour`) >= 14;
+
 ## 6
 
 SELECT \*
 FROM `degrees`
 WHERE `name`
-LIKE 'Corso di Laurea Magistrale%';
+LIKE 'Corso di Laurea Magistrale%'; //oppure solo '%Magistrale%'
+
+OPPURE
+
+SELECT \*
+FROM `degrees`
+WHERE `level` = 'magistrale';
 
 ## 7
 
@@ -59,3 +84,34 @@ SELECT \*
 FROM `teachers`
 WHERE `phone`
 IS NULL;
+
+OPPURE
+
+SELECT
+COUNT(\*)
+AS 'teachers_without_phone'
+FROM `teachers`
+WHERE `phone`
+IS NULL;
+
+# GROUP BY
+
+## 1
+
+SELECT COUNT(`id`), YEAR(`enrolment_date`)
+FROM `students`
+GROUP BY YEAR(`enrolment_date`);
+
+OPPURE
+
+SELECT COUNT(`id`) as numero_studenti, YEAR(`enrolment_date`) AS `anno_di_iscrizione`
+FROM `students`
+GROUP BY `anno_di_iscrizione`;
+
+## 2
+
+SELECT COUNT(`id`) as `numero_insegnanti`, `office_address` AS `edificio_ufficio`
+FROM `teachers`
+GROUP BY `edificio_ufficio`;
+
+## 3
