@@ -119,3 +119,9 @@ GROUP BY `edificio_ufficio`;
 SELECT ROUND(SUM(`vote`) / COUNT(`vote`)) AS `media_voti`, `exam_id` AS `appello_id`
 FROM `exam_student`
 GROUP BY `exam_id`;
+
+## 4
+
+SELECT `department_id` AS `dipartimento_id`, COUNT(`id`) AS `numero_corsi_di_laurea`
+FROM `degrees`
+GROUP BY `department_id`;
