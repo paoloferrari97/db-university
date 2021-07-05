@@ -115,3 +115,7 @@ FROM `teachers`
 GROUP BY `edificio_ufficio`;
 
 ## 3
+
+SELECT ROUND(SUM(`vote`) / COUNT(`vote`)) AS `media_voti`, `exam_id` AS `appello_id`
+FROM `exam_student`
+GROUP BY `exam_id`;
