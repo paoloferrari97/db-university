@@ -120,8 +120,53 @@ SELECT ROUND(SUM(`vote`) / COUNT(`vote`)) AS `media_voti`, `exam_id` AS `appello
 FROM `exam_student`
 GROUP BY `exam_id`;
 
+OPPURE
+
+SELECT ROUND(AVG(`vote`)) AS `media_voti`, `exam_id` AS `appello_id`
+FROM `exam_student`
+GROUP BY `exam_id`;
+
 ## 4
 
 SELECT `department_id` AS `dipartimento_id`, COUNT(`id`) AS `numero_corsi_di_laurea`
 FROM `degrees`
 GROUP BY `department_id`;
+
+# JOINS
+
+## 1
+
+SELECT \*
+FROM `students`
+JOIN `degrees`
+ON `degrees`.`id` = `students`.`degree_id`
+WHERE `degrees`.`name`
+LIKE 'Corso di Laurea in Economia';
+
+OPPURE
+
+SELECT `students`.`id`, `students`.`name`, `students`.`surname`, `students`.`date_of_birth`, `students`.`fiscal_code`, `students`.`enrolment_date`, `students`.`registration_number`, `students`.`email`
+FROM `students`
+JOIN `degrees`
+ON `degrees`.`id` = `students`.`degree_id`
+WHERE `degrees`.`name`
+LIKE 'Corso di Laurea in Economia';
+
+## 2
+
+SELECT `degrees`.`id`, `degrees`.`name`, `degrees`.`level`, `degrees`.`address`, `degrees`.`email`, `degrees`.`website`
+FROM `degrees`
+JOIN `departments`
+ON `departments`.`id` = `degrees`.`department_id`
+WHERE `departments`.`name`
+LIKE 'Dipartimento di Neuroscienze';
+
+## 3
+
+SELECT `courses`.`id`, `courses`.`name`, `courses`.`description`, `courses`.`period`, `courses`.`year`, `courses`.`cfu`, `courses`.`website`
+FROM `courses`
+JOIN `course_teacher`
+ON `course_teacher`.`course_id` = `courses`.`id`
+WHERE `course_teacher`.`teacher_id` = 44;
+
+## 4
