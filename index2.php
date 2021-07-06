@@ -10,12 +10,14 @@
 
 <body>
 
+    <h4>Digita il nome di uno studente per fare una ricerca nel DB!</h4>
+
     <form action="./index3.php" method="get">
-        <label for="fname">First name:</label>
+        <label for="fname">Nome:</label>
         <input type="text" id="fname" name="fname"><br><br>
-        <label for="lname">Last name:</label>
-        <input type="text" id="lname" name="lname"><br><br>
-        <input type="submit" value="Submit">
+        <!-- <label for="lname">Cognome:</label>
+        <input type="text" id="lname" name="lname"><br><br> -->
+        <input type="submit" value="Cerca!">
     </form>
 
 </body>

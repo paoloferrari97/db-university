@@ -1,7 +1,7 @@
 <?php
 
 $fname = $_GET["fname"];
-$lname = $_GET["lname"];
+/* $lname = $_GET["lname"]; */
 
 define("DB_SERVERNAME", "localhost");
 define("DB_USERNAME", "root");
@@ -16,7 +16,7 @@ if ($conn && $conn->connect_error) {
     echo "Connection Successful, Go!";
 }
 
-$sql = "SELECT * FROM `students` WHERE `students`.`name` = '$fname' AND `students`.`surname` = '$lname'";
+$sql = "SELECT * FROM `students` WHERE `students`.`name` = '$fname' /* AND `students`.`surname` = '$lname' */";
 $result = $conn->query($sql);
 
 /* if ($result && $result->num_rows > 0) {
