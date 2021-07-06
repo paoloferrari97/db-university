@@ -16,7 +16,7 @@ if ($conn && $conn->connect_error) {
 $sql = "SELECT * FROM `students` WHERE `students`.`name` LIKE 'P%'";
 $result = $conn->query($sql);
 
-if ($result && $result->num_rows > 0) {
+/* if ($result && $result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo "Nome: " . $row["name"];
     }
@@ -24,7 +24,7 @@ if ($result && $result->num_rows > 0) {
     echo "0 results";
 } else {
     echo "query error";
-}
+} */
 
 ?>
 
@@ -40,6 +40,30 @@ if ($result && $result->num_rows > 0) {
 
 <body>
 
+    <h2>
+        Lista Studenti:
+    </h2>
+
+    <ol>
+        <?php
+
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+        ?>
+        <li>
+            <h4>
+                <?php echo $row["name"] ?> <?php echo $row["surname"] ?>
+            </h4>
+        </li>
+        <?php    }
+        } elseif ($results) {
+            echo "0 results";
+        } else {
+            echo "query error";
+        }
+
+        ?>
+    </ol>
 </body>
 
 </html>
