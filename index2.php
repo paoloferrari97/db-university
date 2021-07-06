@@ -13,6 +13,19 @@ if ($conn && $conn->connect_error) {
     echo "Connection Successful, Go!";
 }
 
+$sql = "SELECT * FROM `students` WHERE `students`.`name` LIKE 'P%'";
+$result = $conn->query($sql);
+
+if ($result && $result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo "Nome: " . $row["name"];
+    }
+} elseif ($results) {
+    echo "0 results";
+} else {
+    echo "query error";
+}
+
 ?>
 
 <!DOCTYPE html>
