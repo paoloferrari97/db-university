@@ -29,6 +29,13 @@ $result = $conn->query($sql);
     echo "query error";
 } */
 
+/* $stmt = $conn->prepare("SELECT * FROM `students` WHERE students.name = ?");
+$stmt->bind_param("s", $name);
+
+$name = $fname;
+
+$stmt->execute(); */
+
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +71,8 @@ $result = $conn->query($sql);
         } else {
             echo "query error";
         }
+
+        $conn->close();
 
         ?>
     </ol>
